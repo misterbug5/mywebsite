@@ -1,27 +1,18 @@
 package io.github.misterbug5.mywebsite;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+
 
 @SpringBootApplication
-@RestController
+@Controller
 @EnableAutoConfiguration
 public class MywebsiteApplication {
 
-	@RequestMapping("/")
-	String home(){
-		return "<strong>Hello World!</strong> how are you today?";
-	}
-
-	@RequestMapping("*")
-	String defaultPage(){
-		return "You are in default";
-	}
-
-	@RequestMapping("index")
+	@RequestMapping("{symbolicName:^(?!api$).*$}")
 	String courses(){
 		return "index";
 	}
